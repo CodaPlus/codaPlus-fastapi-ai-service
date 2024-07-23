@@ -1,0 +1,24 @@
+version: "3.7"
+services:
+  llm_backend:
+    build: .
+    image: codaplus-llm-backend
+    command: gunicorn -k uvicorn.workers.UvicornWorker app:app --bind 127.0.0.1:8000 --timeout 600 --keep-alive 600 --workers 4
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 6144M
+        reservations:
+          cpus: "0.25"
+          memory: 128M
+
+  dramatiq_worker:
+    container_name: dramatiq_worker
+    build: .
+    command: dramatiq worker --processes 2 --threads 4
+    depends_on:
+      - llm_backend

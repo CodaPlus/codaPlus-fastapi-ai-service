@@ -1,0 +1,12 @@
+fewShotPrompt:
+  filepath: "configs/prompts/few_shot_prompt.yaml"
+qaPrompt:
+  filepath: "configs/prompts/qa_prompt.yaml"
+qaRulePrompt:
+  filepath: "configs/prompts/qa_rule_prompt.yaml"
+condensePrompt:
+  filepath: "configs/prompts/condense_prompt.yaml"
+userChatPrompt:
+  filepath: "configs/prompts/user_chat_prompt.yaml"
+detectLanguagePrompt:
+  filepath: "configs/prompts/detect_language_prompt.yaml"
